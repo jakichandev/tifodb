@@ -1,0 +1,8 @@
+button.btn-primary {
+  border: 0.185rem solid var(--color-primary);
+  background: none;
+  padding: 0.4rem 0.8rem;
+  color: var(--color-primary);
+  font-size: var(--font-size-normal);
+  font-weight: 600;
+}

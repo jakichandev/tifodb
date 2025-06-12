@@ -1,0 +1,39 @@
+@import url("https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,100..900;1,100..900&display=swap");
+
+:root {
+  /* Colori */
+  --color-primary: #ffce00; /* blu brillante */
+  --color-secondary: #ff6f61; /* rosso corallo */
+  --color-bg: #2b3440;
+  --color-bg-dark: #1c1f24; /* grigio scuro per il background */
+  --color-text: #333333; /* grigio scuro per il testo */
+
+  /* Font size */
+  --font-size-sm: 0.875rem; /* 14px */
+  --font-size-normal: 1rem; /* 16px */
+  --font-size-md: 1.5rem;
+  --font-size-lg: 2.5rem;
+  --font-size-xl: 3.3rem;
+}
+
+html {
+  box-sizing: border-box;
+  font-size: 16px; /* base size per rem */
+  scroll-behavior: smooth;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+body {
+  font-family: "Archivo", sans-serif;
+  color: var(--color-text);
+  background-color: var(--color-bg);
+  line-height: 1.5;
+}

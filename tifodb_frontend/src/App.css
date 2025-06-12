@@ -1,0 +1,41 @@
+a {
+  color: var(--color-primary);
+  text-decoration: none;
+  &:active {
+    color: var(--color-secondary);
+  }
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+p {
+  color: var(--color-primary);
+}
+
+*.h1 {
+  font-size: var(--font-size-xl);
+  font-weight: 700;
+}
+*.h2 {
+  font-size: var(--font-size-lg);
+  font-weight: 700;
+}
+*.h3 {
+  font-size: var(--font-size-md);
+  font-weight: 700;
+}
+*.h4 {
+  font-size: var(--font-size-normal);
+  font-weight: 700;
+}
+*.h5 {
+  font-size: var(--font-size-sm);
+  font-weight: 700;
+}
+*.p {
+  font-size: var(--font-size-normal);
+  font-weight: 400;
+}
