@@ -2,18 +2,25 @@
 
 :root {
   /* Colori */
-  --color-primary: #ffce00; /* blu brillante */
-  --color-secondary: #ff6f61; /* rosso corallo */
+  --color-primary: #ffce00;
+  --color-secondary: #ff6f61;
+  --color-important: #2fffdc; /* colore importante */
   --color-bg: #2b3440;
   --color-bg-dark: #1c1f24; /* grigio scuro per il background */
   --color-text: #333333; /* grigio scuro per il testo */
 
   /* Font size */
-  --font-size-sm: 0.875rem; /* 14px */
-  --font-size-normal: 1rem; /* 16px */
-  --font-size-md: 1.5rem;
-  --font-size-lg: 2.5rem;
-  --font-size-xl: 3.3rem;
+  --font-size-xs: 0.8rem;
+  --font-size-sm: 1em;
+  --font-size-normal: 1.2rem;
+  --font-size-md: 1.8rem;
+  --font-size-lg: 2.8rem;
+  --font-size-xl: 3.7rem;
+
+  /* Screens */
+  --screen-tablet: 950px;
+  --screen-mobile: 600px;
+  --screen-mobile-sm: 450px;
 }
 
 html {
@@ -36,4 +43,11 @@ body {
   color: var(--color-text);
   background-color: var(--color-bg);
   line-height: 1.5;
+  overflow: hidden;
+}
+
+@media screen and (max-width: 950px) {
+  html {
+    font-size: 12px; /* 15px per tablet */
+  }
 }

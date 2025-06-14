@@ -27,6 +27,7 @@ header {
     }
   }
   & > svg {
+    cursor: pointer;
     width: 2.5rem;
     height: 2.5rem;
     fill: var(--color-primary);
@@ -49,6 +50,7 @@ header {
       left: 0;
       transform: translateX(100vw);
       transition: transform 0.3s ease-in-out;
+      z-index: 10;
       &.active {
         transform: translateX(0);
       }
@@ -77,6 +79,7 @@ header {
       width: 90%;
       opacity: 0;
       transition: opacity 0.3s ease-in-out;
+      z-index: 10;
       &.visible {
         opacity: 1;
       }

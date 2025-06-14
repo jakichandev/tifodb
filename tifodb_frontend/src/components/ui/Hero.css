@@ -1,0 +1,52 @@
+section.hero {
+  position: relative;
+  height: 94vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  background: url("../../assets/images/Hero.png") no-repeat;
+  background-size: cover;
+  & > div.content {
+    min-width: 50vw;
+    max-width: 80vw;
+  }
+}
+
+div.search-wrapper {
+  position: relative;
+  & > div.submit-wrapper {
+    position: absolute;
+    right: 0;
+    top: 0;
+    margin-right: 2.7rem;
+    margin-top: 0.7rem;
+  }
+}
+
+button.submit {
+  background-color: transparent;
+  border: none;
+  position: relative;
+  right: 2%;
+  & > svg {
+    color: var(--color-important);
+    font-size: 1.5rem;
+    position: absolute;
+  }
+}
+
+@media screen and (max-width: 950px) {
+  section.hero {
+    height: 78vh;
+    & > div.content {
+      width: 90vw;
+      height: 50%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 1rem;
+    }
+  }
+}

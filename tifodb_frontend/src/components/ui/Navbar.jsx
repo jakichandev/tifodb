@@ -3,7 +3,7 @@ import { useState } from "react";
 import Logo from "../elements/Logo";
 import Button from "../elements/Button";
 import "../../index.css";
-import "./Navbar.css"; // Assuming you have a CSS file for styling
+import "./Navbar.css";
 import { MdListAlt } from "react-icons/md";
 import { MdOutlineStadium } from "react-icons/md";
 import { CiMenuKebab } from "react-icons/ci";
