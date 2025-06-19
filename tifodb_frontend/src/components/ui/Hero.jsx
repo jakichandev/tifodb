@@ -1,5 +1,6 @@
 import "./Hero.css";
-import { IoSearchOutline } from "react-icons/io5";
+import "../elements/SearchBar";
+import SearchBar from "../elements/SearchBar";
 
 const Hero = () => {
   return (
@@ -10,24 +11,7 @@ const Hero = () => {
           dalle rivalità ai gemellaggi fino alle informazioni sui gruppi e le
           loro storie, un database completo per gli appassionati del tifo
         </h4>
-        <div className="search-wrapper">
-          <input
-            type="text"
-            name="search"
-            className="search"
-            id=""
-            placeholder={
-              navigator.userAgent.includes("Mac")
-                ? "Cerca una tifoseria | ⌘ + K"
-                : "Cerca una tifoseria | Ctrl + K"
-            }
-          />
-          <div className="submit-wrapper">
-            <button className="submit" type="submit">
-              <IoSearchOutline className="search-icon" />
-            </button>
-          </div>
-        </div>
+        <SearchBar />
       </div>
     </section>
   );

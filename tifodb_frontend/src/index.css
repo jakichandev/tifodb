@@ -1,12 +1,11 @@
-@import url("https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,100..900;1,100..900&display=swap");
-
+@import url("https://fonts.googleapis.com/css2?family=Familjen+Grotesk:ital,wght@0,400..700;1,400..700&display=swap");
 :root {
   /* Colori */
   --color-primary: #ffce00;
   --color-secondary: #ff6f61;
   --color-important: #2fffdc; /* colore importante */
-  --color-bg: #2b3440;
-  --color-bg-dark: #1c1f24; /* grigio scuro per il background */
+  --color-bg: #201f1f;
+  --color-bg-dark: #121212; /* grigio scuro per lo sfondo */
   --color-text: #333333; /* grigio scuro per il testo */
 
   /* Font size */
@@ -39,7 +38,7 @@ html {
 }
 
 body {
-  font-family: "Archivo", sans-serif;
+  font-family: "Familjen Grotesk", sans-serif;
   color: var(--color-text);
   background-color: var(--color-bg);
   line-height: 1.5;

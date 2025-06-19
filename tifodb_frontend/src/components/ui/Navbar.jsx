@@ -12,7 +12,10 @@ const Navbar = () => {
   const [active, setActive] = useState(false);
   return (
     <header>
-      <Logo width={140} height={"auto"} />
+      <Link to={"/"} className="logo-link">
+        <Logo width={140} height={"auto"} />
+      </Link>
+
       <nav className={active ? "active" : ""}>
         <ul>
           <li>

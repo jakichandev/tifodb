@@ -25,21 +25,40 @@ div.search-wrapper {
   }
 }
 
-button.submit {
+button.icons-search {
   background-color: transparent;
   border: none;
   position: relative;
   right: 2%;
+
+  &.added-value {
+    & > svg {
+      &.clear-value-icon {
+        display: block;
+        transition: all 0.3s ease-in-out;
+      }
+      &.search-icon {
+        right: 0.8rem;
+        transition: all 0.3s ease-in-out;
+      }
+    }
+  }
+
   & > svg {
     color: var(--color-important);
     font-size: 1.5rem;
     position: absolute;
+    transition: all 0.3s ease-in-out;
+    &.clear-value-icon {
+      display: none;
+      color: red;
+    }
   }
 }
 
 @media screen and (max-width: 950px) {
   section.hero {
-    height: 78vh;
+    height: 56vh;
     & > div.content {
       width: 90vw;
       height: 50%;

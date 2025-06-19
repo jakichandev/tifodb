@@ -1,9 +1,10 @@
 import "./index.css";
 import "./App.css";
-import Navbar from "./components/ui/Navbar.jsx";
-import Hero from "./components/ui/Hero.jsx";
+import "./components/pages/Homepage.jsx";
 import { Routes, Route } from "react-router-dom";
 import { useEffect } from "react";
+import Homepage from "./components/pages/Homepage.jsx";
+import DataPage from "./components/pages/DataPage.jsx";
 function App() {
   useEffect(() => {
     document.addEventListener("keydown", (event) => {
@@ -21,9 +22,10 @@ function App() {
   }, []);
   return (
     <>
-      <Navbar />
-      <Hero />
-      <Routes></Routes>
+      <Routes>
+        <Route path="/" element={<Homepage />}></Route>
+        <Route path="/list" element={<DataPage />}></Route>
+      </Routes>
     </>
   );
 }
