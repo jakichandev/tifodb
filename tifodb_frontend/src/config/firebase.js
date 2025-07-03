@@ -7,7 +7,7 @@ import { getAuth } from "firebase/auth";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyAL_7jxIG7rdxnpTwWD_RfBJNODyyPjLec",
+  apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
   authDomain: "tifodb1.firebaseapp.com",
   databaseURL: "https://tifodb1-default-rtdb.firebaseio.com",
   projectId: "tifodb1",
