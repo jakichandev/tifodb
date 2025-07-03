@@ -17,7 +17,7 @@ p {
 
 *.h1 {
   font-size: var(--font-size-xl);
-  font-weight: 700;
+  font-weight: 800;
 }
 *.h2 {
   font-size: var(--font-size-lg);
@@ -39,24 +39,9 @@ p {
   font-size: var(--font-size-normal);
   font-weight: 400;
 }
-input.search {
-  font-size: var(--font-size-md);
-  padding: 0.7rem 0.5rem;
-  width: 100%;
-  margin-top: 0.9rem;
-  background-color: transparent;
-  border: 0.1rem solid var(--color-important);
-  color: var(--color-important);
-  -webkit-appearance: none; /* Rimuove l'aspetto predefinito del browser, se necessario */
-  -moz-appearance: none;
-  appearance: none;
-  &::placeholder {
-    font-size: var(--font-size-md);
-    color: var(--color-important);
-    opacity: 0.7;
-  }
-  &:focus {
-    outline: none;
-    box-shadow: 0 0 0.8rem var(--color-important);
-  }
+*.w-normal {
+  font-weight: 400;
+}
+*.w-x-bold {
+  font-weight: 900;
 }

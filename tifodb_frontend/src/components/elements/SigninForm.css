@@ -1,0 +1,70 @@
+div.form-container {
+  margin: 10rem auto;
+  width: 45rem;
+  height: 45rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  position: relative;
+}
+form.auth {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  margin: 0 auto;
+  width: 100%;
+  height: 100%;
+  box-shadow: 0 0 6px #000;
+  color: var(--color-primary);
+  background-color: var(--color-bg-dark);
+  padding: 0 6rem;
+  &.signup {
+    transform: translateX(100%);
+    transition: transform 0.5s ease-out;
+    &.visible {
+      transform: translateX(0);
+    }
+  }
+  & > h4 {
+    text-align: center;
+  }
+  & > div {
+    width: 100%;
+    font-size: var(--font-size-md);
+    &:not(:first-child) {
+      margin-top: 0.6rem;
+    }
+    & > label,
+    input {
+      width: 100%;
+      margin: 0;
+    }
+    & > label {
+      font-size: var(--font-size-md);
+    }
+    & > input {
+      font-size: var(--font-size-sm);
+      padding: 0.5rem 0;
+      background-color: var(--color-bg-dark);
+      outline: none;
+      border: 1px solid var(--color-primary);
+      margin-top: 0.5rem;
+      border-radius: 0.5rem;
+    }
+  }
+  & > input[type="submit"] {
+    width: 100%;
+    display: block;
+    margin: 3rem 0 2rem 0;
+  }
+  & > h6 {
+    font-size: var(--font-size-sm);
+    font-weight: 400;
+    & > span.signup-text {
+      cursor: pointer;
+      font-weight: 600;
+      font-size: var(--font-size-sm);
+    }
+  }
+}

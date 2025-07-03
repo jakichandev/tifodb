@@ -1,20 +1,19 @@
-@import url("https://fonts.googleapis.com/css2?family=Familjen+Grotesk:ital,wght@0,400..700;1,400..700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap");
 :root {
   /* Colori */
-  --color-primary: #ffce00;
+  --color-primary: #ffb700;
   --color-secondary: #ff6f61;
-  --color-important: #2fffdc; /* colore importante */
+  --color-important: #b7f8ed; /* colore importante */
   --color-bg: #201f1f;
   --color-bg-dark: #121212; /* grigio scuro per lo sfondo */
-  --color-text: #333333; /* grigio scuro per il testo */
 
   /* Font size */
   --font-size-xs: 0.8rem;
-  --font-size-sm: 1em;
+  --font-size-sm: 1rem;
   --font-size-normal: 1.2rem;
-  --font-size-md: 1.8rem;
-  --font-size-lg: 2.8rem;
-  --font-size-xl: 3.7rem;
+  --font-size-md: 1.4rem;
+  --font-size-lg: 2rem;
+  --font-size-xl: 2.5rem;
 
   /* Screens */
   --screen-tablet: 950px;
@@ -38,7 +37,7 @@ html {
 }
 
 body {
-  font-family: "Familjen Grotesk", sans-serif;
+  font-family: "Urbanist", sans-serif;
   color: var(--color-text);
   background-color: var(--color-bg);
   line-height: 1.5;

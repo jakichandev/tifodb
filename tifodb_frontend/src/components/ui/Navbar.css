@@ -1,13 +1,29 @@
 header {
-  position: relative;
+  z-index: 3;
+  margin: 0 auto;
+  left: 10vw;
+  top: 0.7rem;
+  margin-top: 1rem;
+  border-radius: 1.5rem;
+  position: sticky;
+  width: 50vw;
   height: 6vh;
-  padding: 0 6rem;
-  background-color: var(--color-bg-dark);
+  padding: 2rem 1.5rem;
+  background: #0f0f0f;
+  background: linear-gradient(
+    90deg,
+    rgba(15, 15, 15, 0.5) 0%,
+    rgba(23, 23, 23, 1) 25%,
+    rgba(15, 15, 15, 0.7) 50%,
+    rgba(18, 16, 16, 0.5) 75%,
+    rgba(20, 20, 20, 1) 100%
+  );
+  border: 1px solid var(--color-primary);
   display: flex;
   justify-content: space-between;
   align-items: center;
   font-weight: 600;
-  font-size: var(--font-size-normal);
+  font-size: var(--font-size-sm);
   & > nav {
     position: sticky;
     & > ul {
@@ -18,15 +34,23 @@ header {
         display: flex;
         align-items: center;
         gap: 0.3rem;
+        padding: 0.2rem 0;
         & > svg {
           width: 1.8rem;
           height: 1.8rem;
           fill: var(--color-primary);
         }
+        &.current {
+          border-bottom: 0.1rem solid var(--color-secondary);
+          color: var(--color-secondary);
+          & > svg {
+            fill: var(--color-secondary);
+          }
+        }
       }
     }
   }
-  & > svg {
+  & > svg.menu-icon {
     cursor: pointer;
     width: 2.5rem;
     height: 2.5rem;
@@ -41,7 +65,12 @@ header {
 
 @media screen and (max-width: 950px) {
   header {
+    margin-top: 0;
     padding: 0 2rem;
+    width: 100vw;
+    border: none;
+    top: 0;
+    border-radius: 0;
     & > nav {
       position: absolute;
       width: 100vw;
@@ -73,20 +102,23 @@ header {
         }
       }
     }
-    button {
+    a.button-link {
+      width: 90%;
       position: fixed;
       bottom: 2rem;
-      width: 90%;
-      opacity: 0;
-      transition: opacity 0.3s ease-in-out;
-      z-index: 10;
       &.visible {
         opacity: 1;
       }
-    }
-    & > svg {
-      display: block;
-      position: sticky;
+      & > button {
+        width: 100%;
+        opacity: 0;
+        transition: opacity 0.3s ease-in-out;
+        z-index: 10;
+      }
+      & > svg.menu-icon {
+        display: block;
+        position: sticky;
+      }
     }
   }
 }

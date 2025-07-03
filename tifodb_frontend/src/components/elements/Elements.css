@@ -1,8 +1,35 @@
-button.btn-primary {
-  border: 0.185rem solid var(--color-primary);
+.btn-primary {
+  border: 1px solid var(--color-primary);
   background: none;
   padding: 0.4rem 0.8rem;
+  border-radius: 0.5rem;
   color: var(--color-primary);
   font-size: var(--font-size-normal);
   font-weight: 600;
+  &.active {
+    background-color: var(--color-secondary);
+    color: var(--color-bg-dark);
+    border: none;
+  }
+}
+
+input.search {
+  display: block;
+  font-size: var(--font-size-md);
+  padding: 0.7rem 0.5rem;
+  background-color: transparent;
+  border: none;
+  color: var(--color-important);
+  -webkit-appearance: none; /* Rimuove l'aspetto predefinito del browser, se necessario */
+  -moz-appearance: none;
+  appearance: none;
+  font-size: var(--font-size-normal);
+  outline: none;
+  width: 100%;
+  &::placeholder {
+    color: var(--color-important);
+    opacity: 0.7;
+    font-size: var(--font-size-sm);
+    font-family: "Urbanist", sans-serif;
+  }
 }

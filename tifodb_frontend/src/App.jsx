@@ -5,6 +5,8 @@ import { Routes, Route } from "react-router-dom";
 import { useEffect } from "react";
 import Homepage from "./components/pages/Homepage.jsx";
 import DataPage from "./components/pages/DataPage.jsx";
+import AddCurves from "./components/pages/AddCurves.jsx";
+import AuthPage from "./components/pages/AuthPage.jsx";
 function App() {
   useEffect(() => {
     document.addEventListener("keydown", (event) => {
@@ -25,6 +27,8 @@ function App() {
       <Routes>
         <Route path="/" element={<Homepage />}></Route>
         <Route path="/list" element={<DataPage />}></Route>
+        <Route path="/add" element={<AddCurves />}></Route>
+        <Route path="/signin" element={<AuthPage />}></Route>
       </Routes>
     </>
   );

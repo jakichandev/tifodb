@@ -21,6 +21,7 @@ const DataPage = () => {
           id: doc.id,
           ...doc.data(),
         }));
+        console.log("Fetched data:", data);
         setData(data);
         setLoading(false);
       } catch (err) {
@@ -65,6 +66,7 @@ const DataPage = () => {
               </th>
             </tr>
           </thead>
+
           <tbody>
             {data.map((curva) => (
               <tr key={curva.team}>
