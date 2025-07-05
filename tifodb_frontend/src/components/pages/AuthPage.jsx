@@ -6,7 +6,7 @@ import "../elements/SigninForm.css";
 import "../elements/Elements.css";
 
 const AuthPage = () => {
-  const [hiddenPassword, hidePassword] = useState(false);
+  const [hiddenPassword, hidePassword] = useState(true);
   const [visibleForm, changeVisibleForm] = useState("signin");
   return (
     <>
@@ -21,7 +21,10 @@ const AuthPage = () => {
 
           <div>
             <label htmlFor="password">Password</label>
-            <input type={hiddenPassword ? "password" : "text"} />
+            <input
+              className="input-password"
+              type={hiddenPassword ? "password" : "text"}
+            />
           </div>
 
           <input type="submit" value="Accedi" className="btn-primary" />
@@ -50,7 +53,20 @@ const AuthPage = () => {
 
           <div>
             <label htmlFor="password">Password</label>
-            <input type="text" />
+            <div className="input-password-container">
+              <input
+                className="input-password"
+                type={hiddenPassword ? "password" : "text"}
+              />
+              <span
+                className="toggle-password"
+                onClick={() => {
+                  hidePassword(!hiddenPassword);
+                }}
+              >
+                {hiddenPassword ? "Mostra" : "Nascondi"}
+              </span>
+            </div>
           </div>
 
           <input type="submit" value="Iscriviti" className="btn-primary" />

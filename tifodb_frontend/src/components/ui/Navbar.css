@@ -4,9 +4,9 @@ header {
   left: 10vw;
   top: 0.7rem;
   margin-top: 1rem;
-  border-radius: 1.5rem;
+  border-radius: 0.5rem;
   position: sticky;
-  width: 50vw;
+  width: 42rem;
   height: 6vh;
   padding: 2rem 1.5rem;
   background: #0f0f0f;
@@ -67,6 +67,7 @@ header {
   header {
     margin-top: 0;
     padding: 0 2rem;
+    max-width: 100vw;
     width: 100vw;
     border: none;
     top: 0;
@@ -106,19 +107,18 @@ header {
       width: 90%;
       position: fixed;
       bottom: 2rem;
-      &.visible {
+      z-index: 10;
+      opacity: 0;
+      &.active {
         opacity: 1;
       }
       & > button {
         width: 100%;
-        opacity: 0;
-        transition: opacity 0.3s ease-in-out;
-        z-index: 10;
       }
-      & > svg.menu-icon {
-        display: block;
-        position: sticky;
-      }
+    }
+    & > svg.menu-icon {
+      display: block;
+      position: sticky;
     }
   }
 }

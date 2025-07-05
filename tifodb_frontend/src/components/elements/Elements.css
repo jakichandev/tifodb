@@ -6,6 +6,7 @@
   color: var(--color-primary);
   font-size: var(--font-size-normal);
   font-weight: 600;
+  cursor: pointer;
   &.active {
     background-color: var(--color-secondary);
     color: var(--color-bg-dark);
