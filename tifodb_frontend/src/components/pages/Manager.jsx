@@ -1,6 +1,6 @@
 import { useState } from "react";
 import Navbar from "../ui/Navbar";
-const AddCurves = () => {
+const Manager = () => {
   const [curva, setCurva] = useState({
     team: "",
     city: "",
@@ -36,4 +36,4 @@ const AddCurves = () => {
   );
 };
 
-export default AddCurves;
+export default Manager;

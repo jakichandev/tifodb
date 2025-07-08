@@ -18,11 +18,9 @@ form.auth {
   color: var(--color-primary);
   background-color: var(--color-bg-dark);
   padding: 0 6rem;
-
+  transition: transform 0.3s ease-in-out;
   &.signup {
     transform: translateX(100%);
-    transition: transform 0.5s ease-out;
-
     &.visible {
       transform: translateX(0);
     }

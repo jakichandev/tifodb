@@ -8,6 +8,7 @@ import "./Navbar.css";
 import { MdListAlt } from "react-icons/md";
 import { MdOutlineStadium } from "react-icons/md";
 import { CiMenuKebab } from "react-icons/ci";
+import AuthConnection from "../elements/AuthConnection";
 
 const Navbar = () => {
   const [active, setActive] = useState(false);
@@ -62,6 +63,7 @@ const Navbar = () => {
           setActive(!active);
         }}
       />
+      <AuthConnection />
     </header>
   );
 };

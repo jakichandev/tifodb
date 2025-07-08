@@ -63,6 +63,42 @@ header {
   }
 }
 
+div.auth-connection {
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  z-index: 5;
+  color: var(--color-primary);
+  font-size: var(--font-size-xs);
+  display: flex;
+  align-items: center;
+  & > svg.auth-connection-icon {
+    width: 1.5rem;
+    height: 1.5rem;
+    fill: var(--color-primary);
+    cursor: pointer;
+  }
+  & > div.options-auth-wrapper {
+    position: absolute;
+    width: 100%;
+    background-color: var(--color-bg-dark);
+    margin-top: 10rem;
+    box-sizing: border-box;
+    border: 1px solid var(--color-primary);
+    border-radius: 0.5rem;
+    & > ul {
+      & > li {
+        box-sizing: border-box;
+        width: 100%;
+        padding: 0.5rem 1rem;
+        &:hover {
+          background-color: var(--color-bg);
+        }
+      }
+    }
+  }
+}
+
 @media screen and (max-width: 950px) {
   header {
     margin-top: 0;

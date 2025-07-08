@@ -1,87 +1,104 @@
 import { useState } from "react";
-import { createUserWithEmailAndPassword } from "firebase/auth";
+import {
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+} from "firebase/auth";
 import { auth } from "../../config/firebase";
 import Navbar from "../ui/Navbar";
+import AuthForm from "../elements/AuthForm";
 import "../elements/SigninForm.css";
 import "../elements/Elements.css";
 
 const AuthPage = () => {
   const [hiddenPassword, hidePassword] = useState(true);
   const [visibleForm, changeVisibleForm] = useState("signin");
+  const [dataSignUp, setDataSignUp] = useState({
+    email: "",
+    password: "",
+  });
+  const [dataSignIn, setDataSignIn] = useState({
+    email: "",
+    password: "",
+  });
+  const [statusMessage, setStatusMessage] = useState("");
+
+  const signIn = async (e) => {
+    e.preventDefault();
+    try {
+      const userCredential = await signInWithEmailAndPassword(
+        auth,
+        dataSignIn.email,
+        dataSignIn.password
+      );
+      if (userCredential) {
+        setStatusMessage("Accesso riuscito!");
+        changeVisibleForm("signin");
+      }
+    } catch (error) {
+      setStatusMessage("Errore durante l'accesso. Riprova.");
+      console.error("Error signing in:", error.code, error.message);
+      setStatusMessage(`Errore: ${error.message}`); // mostra errore utile
+    }
+  };
+
+  const signUp = async (e) => {
+    e.preventDefault();
+    try {
+      const createSignUp = await createUserWithEmailAndPassword(
+        auth,
+        dataSignUp.email,
+        dataSignUp.password
+      );
+      if (createSignUp) {
+        changeVisibleForm("signin");
+        setStatusMessage("Registrazione riuscita! Ora puoi accedere.");
+      }
+    } catch (error) {
+      console.error("Error creating user:", error);
+      setStatusMessage(
+        "Errore durante la registrazione. Assicurati che l'email sia valida e non sia già in uso."
+      );
+    }
+  };
+
+  const fillData = (e, fn, data, dataObj) => {
+    fn({
+      ...dataObj,
+      [data]: e.target.value,
+    });
+  };
+
   return (
     <>
       <Navbar />
       <div className="form-container">
-        <form className="auth signin">
-          <h4 className="h2">Login</h4>
-          <div>
-            <label htmlFor="email">Email</label>
-            <input type="text" />
-          </div>
-
-          <div>
-            <label htmlFor="password">Password</label>
-            <input
-              className="input-password"
-              type={hiddenPassword ? "password" : "text"}
-            />
-          </div>
-
-          <input type="submit" value="Accedi" className="btn-primary" />
-          <h6>
-            Non hai un account?{" "}
-            <span
-              className="signup-text"
-              onClick={() => {
-                changeVisibleForm("signup");
-              }}
-            >
-              Iscriviti.
-            </span>
-          </h6>
-        </form>
-        <form
+        <AuthForm
+          scope="signin"
+          statusMessage={statusMessage}
+          className="auth signin"
+          changeVisibleForm={changeVisibleForm}
+          hiddenPassword={hiddenPassword}
+          fillData={fillData}
+          setData={setDataSignIn}
+          data={dataSignIn}
+          sign={signIn}
+          hidePassword={hidePassword}
+        ></AuthForm>
+        <AuthForm
+          scope="signup"
+          statusMessage={statusMessage}
+          visibleForm={visibleForm}
           className={
             visibleForm === "signup" ? "auth signup visible" : "auth signup"
           }
-        >
-          <h4 className="h2">Registrati</h4>
-          <div>
-            <label htmlFor="email">Email</label>
-            <input type="text" />
-          </div>
-
-          <div>
-            <label htmlFor="password">Password</label>
-            <div className="input-password-container">
-              <input
-                className="input-password"
-                type={hiddenPassword ? "password" : "text"}
-              />
-              <span
-                className="toggle-password"
-                onClick={() => {
-                  hidePassword(!hiddenPassword);
-                }}
-              >
-                {hiddenPassword ? "Mostra" : "Nascondi"}
-              </span>
-            </div>
-          </div>
-
-          <input type="submit" value="Iscriviti" className="btn-primary" />
-          <h6>
-            Hai già un account?{" "}
-            <span
-              className="signup-text"
-              onClick={() => {
-                changeVisibleForm("signin");
-              }}
-            >
-              Accedi.
-            </span>
-          </h6>
-        </form>
+          changeVisibleForm={changeVisibleForm}
+          hiddenPassword={hiddenPassword}
+          fillData={fillData}
+          setData={setDataSignUp}
+          data={dataSignUp}
+          sign={signUp}
+          hidePassword={hidePassword}
+        ></AuthForm>
       </div>
     </>
   );
