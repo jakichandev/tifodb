@@ -1,37 +1,10 @@
-import { useState, useEffect } from "react";
 import Navbar from "../ui/Navbar";
 import "../elements/DataTable.css";
 import Loader from "../elements/Loader";
-import { db } from "../../config/firebase";
-import { getDocs, collection } from "firebase/firestore";
+import useFetch from "../../hooks/useFetch";
 
 const DataPage = () => {
-  const [data, setData] = useState([]);
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState({});
-
-  const fansCollection = collection(db, "curve");
-
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        setLoading(true);
-        const querySnapshot = await getDocs(fansCollection);
-        const data = querySnapshot.docs.map((doc) => ({
-          id: doc.id,
-          ...doc.data(),
-        }));
-        console.log("Fetched data:", data);
-        setData(data);
-        setLoading(false);
-      } catch (err) {
-        console.error("Error fetching data:", err);
-        setError(err);
-      }
-    };
-
-    fetchData();
-  }, []);
+  const { dataCurves, loading, error } = useFetch();
   return (
     <>
       <Navbar />
@@ -68,7 +41,7 @@ const DataPage = () => {
           </thead>
 
           <tbody>
-            {data.map((curva) => (
+            {dataCurves.map((curva) => (
               <tr key={curva.team}>
                 <td>{curva.team}</td>
                 <td>{curva.city}</td>

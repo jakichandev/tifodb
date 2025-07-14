@@ -1,0 +1,20 @@
+div.popup {
+  width: 35vw;
+  height: 20vh;
+  background: var(--color-bg-dark);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  & > div.wrapper {
+    & > div.buttons {
+      margin-top: 2rem;
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+    }
+  }
+}

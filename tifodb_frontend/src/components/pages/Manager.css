@@ -1,0 +1,138 @@
+section.manager,
+section.manager-add {
+  & > div.wrapper {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 65rem;
+    max-width: 90%;
+    box-sizing: border-box;
+    margin: 2rem auto;
+    & > nav {
+      width: 100%;
+      height: 4rem;
+      padding: 1rem 0.8rem;
+      border-radius: 0.5rem;
+      display: flex;
+      align-items: center;
+      background-color: var(--color-bg-dark);
+      display: flex;
+      justify-content: start;
+      gap: 1rem;
+      & > div.filter-btn {
+        color: var(--color-primary);
+        display: flex;
+        align-items: center;
+        font-size: var(--font-size-normal);
+        font-weight: 600;
+        padding: 0.4rem 0.8rem;
+        box-sizing: border-box;
+        border: 1px solid var(--color-primary);
+        border-radius: 0.5rem;
+        & > svg {
+          color: var(--color-primary);
+          width: 50%;
+        }
+      }
+    }
+
+    & > div.list-curves {
+      & > ul {
+        width: 100%;
+        margin: 1rem 0;
+        & > li {
+          color: var(--color-primary);
+          position: relative;
+          background-color: var(--color-bg-dark);
+          padding: 0.2rem 0;
+          animation: element-in 0.4s ease-out;
+          &:not(:first-child) {
+            margin: 0.2rem 0;
+          }
+          & > div.row-content {
+            display: flex;
+            gap: 0.3rem;
+            & > span:not(:last-child) {
+              border-right: 1px solid var(--color-bg-light);
+            }
+            & > span {
+              padding: 0 0.4rem;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+section.manager-add {
+  & > div.wrapper {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 65rem;
+    max-width: 90%;
+    box-sizing: border-box;
+    margin: 2rem auto;
+    & > form.add-curve-form {
+      & > div {
+        display: flex;
+        flex-direction: column;
+        color: var(--color-primary);
+      }
+    }
+    & > nav > a {
+      display: flex;
+      align-items: center;
+    }
+    & > nav > a > svg {
+      font-weight: 600;
+      font-size: var(--font-size-lg);
+    }
+    & > form.add-curve-form {
+      & > div {
+        display: flex;
+        flex-direction: column;
+        margin: 0.6rem 0;
+        & > input[type="text"] {
+          position: relative;
+          color: var(--color-primary);
+          font-size: var(--font-size-sm);
+          padding: 0.5rem 0.4rem;
+          background-color: var(--color-bg-dark);
+          outline: none;
+          border: none;
+          border-bottom: 1px solid var(--color-primary);
+          margin-top: 0.5rem;
+          cursor: text;
+        }
+        & > button.add-actual-group {
+          width: 13rem;
+          margin-top: 0.6rem;
+        }
+        & > ul {
+          & > li {
+            display: inline-block;
+            flex-direction: row;
+            align-items: center;
+            gap: 0.2rem;
+            background-color: var(--color-primary);
+            color: var(--color-bg-dark);
+            &:not(:first-child) {
+              margin: 0 0 0 0.4rem;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@keyframes element-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}

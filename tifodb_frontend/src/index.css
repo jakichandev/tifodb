@@ -5,7 +5,8 @@
   --color-secondary: #ff6f61;
   --color-important: #b7f8ed; /* colore importante */
   --color-bg: #201f1f;
-  --color-bg-dark: #121212; /* grigio scuro per lo sfondo */
+  --color-bg-dark: #121212;
+  --color-bg-light: #3b3b3b;
 
   /* Font size */
   --font-size-xs: 0.8rem;

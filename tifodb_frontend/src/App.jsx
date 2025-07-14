@@ -10,6 +10,8 @@ import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "./config/firebase.js";
 import { AuthContext } from "./contexts/AuthContext.js";
 import Manager from "./components/pages/Manager.jsx";
+import ManagerAdd from "./components/pages/ManagerAdd.jsx";
+import SignOut from "./components/pages/SignOut.jsx";
 function App() {
   const [userInfo, setUserInfo] = useState(null);
   useEffect(() => {
@@ -42,6 +44,8 @@ function App() {
         <Route path="/list" element={<DataPage />}></Route>
         <Route path="/manager" element={<Manager />}></Route>
         <Route path="/signin" element={<AuthPage />}></Route>
+        <Route path="/manager/add" element={<ManagerAdd />}></Route>
+        <Route path="/signout" element={<SignOut />}></Route>
       </Routes>
     </AuthContext.Provider>
   );

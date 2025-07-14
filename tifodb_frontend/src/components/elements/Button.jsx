@@ -1,8 +1,12 @@
 import "../../index.css";
 import "./Elements.css";
 
-const Button = ({ content, className }) => {
-  return <button className={className}>{content}</button>;
+const Button = ({ content, className, onClick }) => {
+  return (
+    <button onClick={onClick} className={className}>
+      {content}
+    </button>
+  );
 };
 
 export default Button;
