@@ -6,10 +6,9 @@ import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 
 const SignOut = () => {
-  const { authSigned } = useContext(AuthContext);
   const navigate = useNavigate();
   const triggerSignOut = async () => {
-    if (!authSigned || authSigned === null) {
+    if (!auth) {
       navigate("/error");
       return;
     }

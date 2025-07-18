@@ -1,4 +1,6 @@
 import Navbar from "../ui/Navbar";
+import StatusBanner from "../elements/StatusBanner";
+import ListFormField from "../elements/ListFormField";
 import "./Manager.css";
 import { Link } from "react-router-dom";
 import { IoChevronBack } from "react-icons/io5";
@@ -10,46 +12,58 @@ const ManagerAdd = () => {
     team: undefined,
     city: undefined,
     actual_groups: [],
+    historical_groups: [],
+    friendships: [],
+    rivalries: [],
+    stadium: "",
   });
   const [previews, setPreviews] = useState({
     actual_groups: undefined,
+    historical_groups: undefined,
+    friendships: undefined,
+    rivalries: undefined,
   });
   const [error, setError] = useState({
     status: false,
     type: "NONE",
-    message: "NOT ERROR",
+    message: "Nessun Errore",
   });
   useEffect(() => {
     console.log(newGroup);
     console.log(previews);
   }, [newGroup, previews]);
 
-  const addActualGroup = (group, event) => {
+  const addGroupList = (group, event, property) => {
     event.preventDefault();
-    if (!group || !group.length > 2) {
+    if (!group || group.length < 2) {
       setError({
         status: true,
         type: "NOT_VALID_ACTUAL_GROUP",
-        message: "Gruppo attuale non valido!",
+        message: "Gruppo non valido!",
       });
       console.log(group);
       return;
     }
-    const result = setNewGroup({
-      ...newGroup,
-      actual_groups: [...newGroup.actual_groups, group],
-    });
-    console.log(result);
-  };
-
-  const removeItem = (i) => {
     setNewGroup({
       ...newGroup,
-      actual_groups: newGroup.actual_groups.filter((val, index) => index != i),
+      [property]: [...newGroup[`${property}`], group],
+    });
+    setError({
+      status: false,
+      type: "NONE",
+      message: "Dati inseriti validamente.",
+    });
+  };
+
+  const removeItem = (i, prop) => {
+    setNewGroup({
+      ...newGroup,
+      [prop]: newGroup.actual_groups.filter((val, index) => index != i),
     });
   };
   return (
     <>
+      <StatusBanner error={error} />
       <Navbar></Navbar>
       <section className="manager-add">
         <div className="wrapper">
@@ -84,30 +98,68 @@ const ManagerAdd = () => {
                 id="city"
               />
             </div>
+
+            <ListFormField
+              name={"actual_groups"}
+              newGroup={newGroup}
+              addGroupList={addGroupList}
+              removeItem={removeItem}
+              placeholder={"Inserisci i gruppi attuali della curva..."}
+              previews={previews}
+              setPreviews={setPreviews}
+              label={"Gruppi attuali"}
+            />
+
             <div>
-              <label htmlFor="actual_groups">Gruppi attuali</label>
-              <input
-                onChange={(e) => setPreviews({ actual_groups: e.target.value })}
-                type="text"
-                name="actual_groups"
-                id="actual_groups"
-              />
-              <button
-                onClick={(e) => addActualGroup(previews.actual_groups, e)}
-                className="btn-primary add-actual-group"
-              >
-                Aggiungi gruppo
-              </button>
-              <ul className="list-added-groups">
-                {newGroup.actual_groups.map((groupAdded, i) => (
-                  <li key={i}>
-                    <span>{groupAdded}</span>
-                    <span>
-                      <CiCircleRemove onClick={() => removeItem(i)} />
-                    </span>
-                  </li>
+              <label htmlFor="main_group">Gruppo principale</label>
+              <select>
+                {newGroup.actual_groups.map((group) => (
+                  <option>{group}</option>
                 ))}
-              </ul>
+              </select>
+            </div>
+
+            <ListFormField
+              name={"historical_groups"}
+              newGroup={newGroup}
+              addGroupList={addGroupList}
+              removeItem={removeItem}
+              placeholder={"Inserisci i gruppi storici della tifoseria..."}
+              previews={previews}
+              setPreviews={setPreviews}
+              label={"Gruppi storici"}
+            />
+            <ListFormField
+              name={"friendships"}
+              newGroup={newGroup}
+              addGroupList={addGroupList}
+              removeItem={removeItem}
+              placeholder={"Inserisci le tifoserie gemellate..."}
+              previews={previews}
+              setPreviews={setPreviews}
+              label={"Gemellaggi"}
+            />
+            <ListFormField
+              name={"rivalries"}
+              newGroup={newGroup}
+              addGroupList={addGroupList}
+              removeItem={removeItem}
+              placeholder={"Inserisci le tifoserie Rivali..."}
+              previews={previews}
+              setPreviews={setPreviews}
+              label={"Rivalità"}
+            />
+
+            <div className="stadium-field">
+              <label htmlFor="stadium">Stadio</label>
+              <input
+                onChange={(e) =>
+                  setNewGroup({ ...newGroup, stadium: e.target.value })
+                }
+                type="text"
+                name="stadium"
+                id="stadium"
+              />
             </div>
           </form>
         </div>

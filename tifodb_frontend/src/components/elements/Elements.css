@@ -34,3 +34,31 @@ input.search {
     font-family: "Urbanist", sans-serif;
   }
 }
+
+div.status-banner {
+  position: fixed;
+  top: calc(100% - 16rem);
+  left: calc(100% - 16rem);
+  width: 15rem;
+  height: 15rem;
+  z-index: 200;
+  transition: transform 0.3s ease-out;
+  &.success.hide {
+    transform: translateX(16rem);
+  }
+  &.success.visible {
+    transform: translateX(0);
+    background-color: var(--color-important);
+    color: var(--color-bg-dark);
+    & > h5 {
+      color: var(--color-bg-dark);
+      background-color: black;
+      width: 100%;
+    }
+  }
+  &.error.visible {
+    transform: translateX(0);
+    background-color: red;
+    color: var(--color-primary);
+  }
+}
