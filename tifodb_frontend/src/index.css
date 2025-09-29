@@ -45,6 +45,10 @@ body {
   overflow: hidden;
 }
 
+*::placeholder {
+  font-family: "Urbanist", sans-serif;
+}
+
 @media screen and (max-width: 950px) {
   html {
     font-size: 12px; /* 15px per tablet */

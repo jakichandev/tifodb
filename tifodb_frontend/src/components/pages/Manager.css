@@ -107,6 +107,10 @@ section.manager-add {
           margin-top: 0.5rem;
           cursor: text;
         }
+        & > label {
+          font-weight: bold;
+          font-size: var(--font-size-normal);
+        }
         & > button.add-actual-group {
           width: 13rem;
           margin-top: 0.6rem;

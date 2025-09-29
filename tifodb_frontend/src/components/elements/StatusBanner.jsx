@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 
 const MessageBanner = ({ error }) => {
-  <p className="error-banner-message">{error.message}</p>;
+  return <p className="error-banner-message">{error.message}</p>;
 };
 
 const StatusBanner = ({ error }) => {
@@ -14,12 +14,13 @@ const StatusBanner = ({ error }) => {
       return;
     }
     setLabel("Successo!");
-  }, [error.status]);
+    setClassName("success visible");
+  }, [error.status, error.message, error.label]);
 
   return (
     <div className={`status-banner ${className}`}>
       <h5>{label}</h5>
-      {error.status && <MessageBanner error={error}></MessageBanner>}
+      <MessageBanner error={error} />
     </div>
   );
 };

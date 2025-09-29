@@ -17,8 +17,8 @@ export default function useFetch() {
           id: doc.id,
           ...doc.data(),
         }));
-        console.log("Fetched data:", data);
-        setDataCurves(data);
+        const inOrder = data.sort((a, b) => a.team.localeCompare(b.team));
+        setDataCurves(inOrder);
         setLoading(false);
       } catch (err) {
         console.error("Error fetching data:", err);

@@ -41,24 +41,39 @@ div.status-banner {
   left: calc(100% - 16rem);
   width: 15rem;
   height: 15rem;
+  box-sizing: border-box;
   z-index: 200;
+}
+
+div.status-banner.hidden {
+  transform: translateX(16rem);
   transition: transform 0.3s ease-out;
-  &.success.hide {
-    transform: translateX(16rem);
-  }
-  &.success.visible {
-    transform: translateX(0);
+  &.success {
     background-color: var(--color-important);
-    color: var(--color-bg-dark);
-    & > h5 {
-      color: var(--color-bg-dark);
-      background-color: black;
-      width: 100%;
-    }
   }
-  &.error.visible {
-    transform: translateX(0);
-    background-color: red;
-    color: var(--color-primary);
+  &.error {
+    background-color: var(--color-secondary);
   }
+}
+
+div.status-banner.visible {
+  transform: translateX(0);
+  transition: transform 0.3s ease-out;
+  &.success {
+    background-color: var(--color-important);
+  }
+  &.error {
+    background-color: var(--color-secondary);
+  }
+}
+
+div.status-banner > h5 {
+  background-color: var(--color-bg-dark);
+  color: var(--color-primary);
+  width: 100%;
+  padding: 0.4rem 0.2rem;
+}
+
+div.status-banner > p {
+  color: var(--color-bg-dark);
 }

@@ -47,8 +47,7 @@ const Manager = () => {
                       <div className="row-content">
                         <span>{curve.city}</span>
                         <span>{curve.team}</span>
-                        <span>{curve.division}</span>
-                        <span>{curve.sport}</span>
+                        <span>{curve.league}</span>
                         <span>{curve.main_group}</span>
                       </div>
                     )}
