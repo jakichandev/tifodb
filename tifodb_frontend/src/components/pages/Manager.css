@@ -57,6 +57,13 @@ section.manager-add {
             }
             & > span {
               padding: 0 0.4rem;
+              &.remove-icon {
+                color: var(--color-important);
+                cursor: pointer;
+                display: flex;
+                align-items: center;
+                gap: 0.2rem;
+              }
             }
           }
         }

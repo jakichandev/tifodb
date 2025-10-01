@@ -132,7 +132,7 @@ const ManagerAdd = () => {
   return (
     <>
       <StatusBanner error={error} />
-      <Navbar></Navbar>
+      <Navbar />
       <section className="manager-add">
         <div className="wrapper">
           {loading && <Loader />}
