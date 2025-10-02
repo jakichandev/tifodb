@@ -33,3 +33,10 @@ section.single-curve {
     }
   }
 }
+
+
+@media screen and (max-width: 950px) {
+  section.single-curve {
+    padding: 2rem 1rem;
+  }
+}

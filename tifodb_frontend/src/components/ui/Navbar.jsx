@@ -46,16 +46,8 @@ const Navbar = () => {
           </li>
         </ul>
       </nav>
-      <Link className={buttonProps.className} to={"/signin"}>
-        <Button
-          className={
-            location.pathname === "/signin"
-              ? "btn-primary active"
-              : "btn-primary"
-          }
-          content={"Collabora"}
-        ></Button>
-      </Link>
+
+      <AuthConnection />
 
       <CiMenuKebab
         className={active ? "menu-icon active" : "menu-icon"}
@@ -63,7 +55,6 @@ const Navbar = () => {
           setActive(!active);
         }}
       />
-      <AuthConnection />
     </header>
   );
 };

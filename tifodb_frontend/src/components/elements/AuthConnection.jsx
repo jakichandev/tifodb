@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext, useState } from "react";
 import { AuthContext } from "../../contexts/AuthContext";
 import { IoIosArrowDown } from "react-icons/io";
 import { Link } from "react-router-dom";
@@ -10,7 +10,7 @@ const AuthConnection = () => {
     return (
       <div className="auth-connection">
         <span className="auth-connection-text">
-          Connesso come <strong>{user}</strong>
+          
         </span>
         <IoIosArrowDown
           onClick={() => setIsOpen(!isOpen)}
