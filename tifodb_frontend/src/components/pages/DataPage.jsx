@@ -1,10 +1,10 @@
 import Navbar from "../ui/Navbar";
 import "../elements/DataTable.css";
 import Loader from "../elements/Loader";
-import useFetch from "../../hooks/useFetch";
+import {useFetch} from "../../hooks/useFetch";
 
 const DataPage = () => {
-  const { dataCurves, loading, error } = useFetch();
+  const { dataCurves, loading } = useFetch();
   return (
     <>
       <Navbar />
@@ -41,7 +41,7 @@ const DataPage = () => {
           </thead>
 
           <tbody>
-            {dataCurves.map((curva) => (
+            {dataCurves?.map((curva) => (
               <tr key={curva.team}>
                 <td>{curva.team}</td>
                 <td>{curva.city}</td>

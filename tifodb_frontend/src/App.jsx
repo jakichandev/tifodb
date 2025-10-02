@@ -12,6 +12,7 @@ import { AuthContext } from "./contexts/AuthContext.js";
 import Manager from "./components/pages/Manager.jsx";
 import ManagerAdd from "./components/pages/ManagerAdd.jsx";
 import SignOut from "./components/pages/SignOut.jsx";
+import { SingleCurve } from "./components/pages/SingleCurve.jsx";
 function App() {
   const [userInfo, setUserInfo] = useState(null);
   useEffect(() => {
@@ -46,6 +47,7 @@ function App() {
         <Route path="/signin" element={<AuthPage />}></Route>
         <Route path="/manager/add" element={<ManagerAdd />}></Route>
         <Route path="/signout" element={<SignOut />}></Route>
+        <Route path="/curve/:id" element={<SingleCurve />}></Route>
       </Routes>
     </AuthContext.Provider>
   );

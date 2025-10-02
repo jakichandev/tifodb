@@ -11,7 +11,7 @@ import { Link } from "react-router-dom";
 import { WarningsBanner } from "../ui/WarningsBanner";
 
 import Button from "../elements/Button";
-import useFetch from "../../hooks/useFetch";
+import { useFetch } from "../../hooks/useFetch";
 import { warningStates } from "../ui/WarningsBanner";
 
 const Manager = () => {
@@ -25,7 +25,6 @@ const Manager = () => {
     console.log("Curve to delete:", curveToDelete);
   }, [curveToDelete]);
 
-
   const openWarningBanner = (curve) => {
     setCurveToDelete(curve);
     setWarningBanner(true);
@@ -35,7 +34,7 @@ const Manager = () => {
     setWarningBanner(false);
     setCurveToDelete(null);
     setWarningState(warningStates.default);
-  }
+  };
 
   const removeCurve = async (curve) => {
     if (!curve) {
