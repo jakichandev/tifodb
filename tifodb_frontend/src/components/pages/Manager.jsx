@@ -102,7 +102,7 @@ const Manager = () => {
           </nav>
           <div className="list-curves">
             <ul>
-              {dataCurves.map((curve) => (
+              {dataCurves?.map((curve) => (
                 <li className="row-curve">
                   {loading ? (
                     <Loader />

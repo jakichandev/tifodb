@@ -1,10 +1,13 @@
 import Navbar from "../ui/Navbar";
 import "../elements/DataTable.css";
 import Loader from "../elements/Loader";
-import {useFetch} from "../../hooks/useFetch";
+import { useFetch } from "../../hooks/useFetch";
+import { useNavigate } from "react-router-dom";
 
 const DataPage = () => {
   const { dataCurves, loading } = useFetch();
+  const navigate = useNavigate();
+
   return (
     <>
       <Navbar />
@@ -42,39 +45,42 @@ const DataPage = () => {
 
           <tbody>
             {dataCurves?.map((curva) => (
-              <tr key={curva.team}>
-                <td>{curva.team}</td>
-                <td>{curva.city}</td>
+              <tr
+                onClick={() => navigate(`/curve/${curva.id.toLowerCase()}`)}
+                key={curva?.team}
+              >
+                <td>{curva?.team}</td>
+                <td>{curva?.city}</td>
                 <td>
                   <ol className="list-table">
-                    {curva.actual_groups.map((group, index) => (
+                    {curva?.actual_groups?.map((group, index) => (
                       <li key={index}>{group}</li>
                     ))}
                   </ol>
                 </td>
-                <td>{curva.main_group}</td>
+                <td>{curva?.main_group}</td>
                 <td>
                   <ol className="list-table">
-                    {curva.legendary_groups.map((group, index) => (
-                      <li key={index}>{group}</li>
-                    ))}
-                  </ol>
-                </td>
-                <td>
-                  <ol className="list-table">
-                    {curva.friendships.map((group, index) => (
+                    {curva?.legendary_groups?.map((group, index) => (
                       <li key={index}>{group}</li>
                     ))}
                   </ol>
                 </td>
                 <td>
                   <ol className="list-table">
-                    {curva.rivalries.map((group, index) => (
+                    {curva?.friendships?.map((group, index) => (
                       <li key={index}>{group}</li>
                     ))}
                   </ol>
                 </td>
-                <td>{curva.stadium}</td>
+                <td>
+                  <ol className="list-table">
+                    {curva?.rivalries?.map((group, index) => (
+                      <li key={index}>{group}</li>
+                    ))}
+                  </ol>
+                </td>
+                <td>{curva?.stadium}</td>
               </tr>
             ))}
           </tbody>

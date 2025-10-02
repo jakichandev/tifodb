@@ -1,12 +1,20 @@
 import { useEffect, useState, useRef } from "react";
 import { IoSearchOutline } from "react-icons/io5";
 import { MdClear } from "react-icons/md";
+import { useNavigate } from "react-router-dom";
 import "./Elements.css"; // Assuming you have a CSS file for styling
 
 const SearchBar = () => {
   const [searchValue, setSearchValue] = useState("");
   const iconClearValueRef = useRef(null);
   const searchInputRef = useRef(null);
+  const navigate = useNavigate();
+
+  const searchCurve = (value) => {
+    console.log("Searching for:", value);
+    if (!value || value.trim() === "") return;
+    navigate(`/curve/${value.toLowerCase()}`);
+  }
 
   const handleSearchValue = (event) => {
     setSearchValue(event.target.value);
@@ -40,6 +48,11 @@ const SearchBar = () => {
         type="text"
         name="search"
         className="search"
+        onKeyDown={(e) => {
+          if (e.key === "Enter") {
+            searchCurve(searchValue);
+          }
+        }}
         placeholder={
           navigator.userAgent.includes("Mac")
             ? "Cerca una tifoseria | ⌘+K"
@@ -47,7 +60,7 @@ const SearchBar = () => {
         }
       />
       <div className="submit-wrapper">
-        <IoSearchOutline className="search-icon" />
+        <IoSearchOutline onClick={() => searchCurve(searchValue)} className="search-icon" />
         <MdClear
           ref={iconClearValueRef}
           onClick={clearValue}

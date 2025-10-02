@@ -3,6 +3,9 @@ import { useEffect } from "react";
 import Loader from "../elements/Loader";
 import { useFetch } from "../../hooks/useFetch";
 import Navbar from "../ui/Navbar";
+import "./SingleCurve.css";
+import { PiCityThin, PiRanking } from "react-icons/pi";
+import { TbBuildingStadium } from "react-icons/tb";
 
 const ListField = ({ label, field }) => (
   <div>
@@ -20,23 +23,71 @@ const ListField = ({ label, field }) => (
 export const SingleCurve = () => {
   const { id } = useParams();
   const { dataCurves, loading, error } = useFetch(id);
-  useEffect(() => {
-    console.log("Fetched curve data:", dataCurves);
-  }, [dataCurves]);
+
+  if (!dataCurves || dataCurves === undefined) {
+    return (
+      <>
+        <Navbar />
+        <section className="single-curve">
+          {loading ?? <Loader />}
+          <div className="wrapper">
+            <h3>Curva non trovata</h3>
+          </div>
+        </section>
+      </>
+    );
+  }
+
   return (
     <>
       <Navbar />
-      <section>
+      <section className="single-curve">
         <div className="wrapper">
           {loading && <Loader />}
           {!dataCurves || (error && <h2>Si è verificato un errore</h2>)}
-          <h1>{dataCurves?.team}</h1>
-          <h3>{dataCurves?.city}</h3>
-          <h3>{dataCurves?.league}</h3>
-          <h3>{dataCurves?.stadium}</h3>
+          <div className="header">
+            <div>
+              <h1>
+                <span></span>
+                {dataCurves?.team}
+              </h1>
+            </div>
+            <div>
+              <h3>
+                <span>
+                  <PiRanking />
+                </span>
+                {dataCurves?.league}
+              </h3>
+              <h3>
+                <span>
+                  <TbBuildingStadium />
+                </span>
+                {dataCurves?.stadium}
+              </h3>
+              <h3>
+                <span>
+                  <PiCityThin />
+                </span>
+                {dataCurves?.city}
+              </h3>
+            </div>
+          </div>
 
           <ListField label="Gruppi Attuali" field={dataCurves?.actual_groups} />
+          <ListField
+            label="Gruppi Storici"
+            field={dataCurves?.legendary_groups}
+          />
+          <div>
+            <h4>Gruppo principale</h4>
+            <span>{dataCurves?.main_group}</span>
+          </div>
           <ListField label="Rivalità" field={dataCurves?.rivalries} />
+          <ListField
+            label="Gemellaggi e Amicizie"
+            field={dataCurves?.friendships}
+          />
         </div>
       </section>
     </>

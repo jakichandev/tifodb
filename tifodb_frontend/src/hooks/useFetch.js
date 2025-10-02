@@ -25,7 +25,7 @@ export function useFetch(id) {
       }));
 
       if (id) {
-        const curveById = data.find((item) => item.id === id);
+        const curveById = data.find((item) => item.id.toLowerCase() === id);
         setLoading(false);
         return setDataCurves(curveById);
       }
