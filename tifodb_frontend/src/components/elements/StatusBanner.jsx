@@ -1,26 +1,8 @@
-import { useEffect, useState } from "react";
-
-const MessageBanner = ({ error }) => {
-  return <p className="error-banner-message">{error.message}</p>;
-};
-
-const StatusBanner = ({ error }) => {
-  const [label, setLabel] = useState("Successo");
-  const [className, setClassName] = useState("success hide");
-  useEffect(() => {
-    if (error.status) {
-      setLabel("Errore!");
-      setClassName("error visible");
-      return;
-    }
-    setLabel("Successo!");
-    setClassName("success visible");
-  }, [error.status, error.message, error.label]);
-
+const StatusBanner = ({ error, label, className = "" }) => {
   return (
-    <div className={`status-banner ${className}`}>
+    <div className={`${className ? "status-banner " + className : "status-banner"}`}>
       <h5>{label}</h5>
-      <MessageBanner error={error} />
+      <p>{error.message}</p>
     </div>
   );
 };

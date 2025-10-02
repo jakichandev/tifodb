@@ -1,4 +1,5 @@
 import { CiCircleRemove } from "react-icons/ci";
+import { useRef } from "react";
 
 const ListFormField = ({
   name,
@@ -10,10 +11,12 @@ const ListFormField = ({
   placeholder,
   label,
 }) => {
+  const inputRef = useRef();
   return (
     <div>
       <label htmlFor={name}>{label}</label>
       <input
+        ref={inputRef}
         onChange={(e) => setPreviews({ [name]: e.target.value })}
         type="text"
         name={name}
@@ -21,7 +24,7 @@ const ListFormField = ({
         placeholder={placeholder}
       />
       <button
-        onClick={(e) => addGroupList(previews[name], e, name)}
+        onClick={(e) => addGroupList(previews[name], e, name, inputRef.current)}
         className="btn-primary add-actual-group"
       >
         Aggiungi gruppo

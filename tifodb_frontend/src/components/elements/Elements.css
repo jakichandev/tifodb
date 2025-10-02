@@ -36,13 +36,18 @@ input.search {
 }
 
 div.status-banner {
-  position: fixed;
-  top: calc(100% - 16rem);
-  left: calc(100% - 16rem);
-  width: 15rem;
-  height: 15rem;
+  position: absolute;
+  left: calc(100% - 10rem);
   box-sizing: border-box;
   z-index: 200;
+  color: var(--color-primary);
+  border: 1px solid var(--color-primary);
+  padding: 0.4rem 1rem;
+  height: 100%;
+  & > h5 {
+    font-size: var(--font-size-normal);
+    font-weight: 600;
+  }
 }
 
 div.status-banner.hidden {
@@ -67,13 +72,8 @@ div.status-banner.visible {
   }
 }
 
-div.status-banner > h5 {
-  background-color: var(--color-bg-dark);
-  color: var(--color-primary);
-  width: 100%;
-  padding: 0.4rem 0.2rem;
-}
-
 div.status-banner > p {
-  color: var(--color-bg-dark);
+  color: var(--color-primary);
+  font-size: var(--font-size-sm);
+  margin-top: 0.2rem;
 }

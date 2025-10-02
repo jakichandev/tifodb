@@ -9,7 +9,6 @@ import { setDoc, doc } from "firebase/firestore";
 import { Link } from "react-router-dom";
 import { IoChevronBack } from "react-icons/io5";
 import { useEffect, useState, useContext } from "react";
-import { CiCircleRemove } from "react-icons/ci";
 
 const ManagerAdd = () => {
   const user = useContext(AuthContext);
@@ -46,7 +45,7 @@ const ManagerAdd = () => {
     console.log(previews);
   }, [newGroup, previews]);
 
-  const addGroupList = (group, event, property) => {
+  const addGroupList = (group, event, property, input) => {
     event.preventDefault();
     if (!group || group.length < 2) {
       setError({
@@ -54,7 +53,6 @@ const ManagerAdd = () => {
         type: "NOT_VALID_ACTUAL_GROUP",
         message: "Gruppo non valido!",
       });
-      console.log(group);
       return;
     }
     setNewGroup({
@@ -66,6 +64,8 @@ const ManagerAdd = () => {
       type: "NONE",
       message: "Dati inseriti validamente.",
     });
+    setPreviews({ ...previews, [property]: "" });
+    input.value = "";
   };
 
   const removeItem = (i, prop) => {
@@ -131,12 +131,15 @@ const ManagerAdd = () => {
   }
   return (
     <>
-      <StatusBanner error={error} />
+      
       <Navbar />
       <section className="manager-add">
+        
         <div className="wrapper">
+          
           {loading && <Loader />}
           <nav>
+            <StatusBanner label={"Nessun Errore"} error={error} className="hidden" />
             <Link to={"/manager"}>
               <IoChevronBack />
               <span>BACK</span>
@@ -187,6 +190,7 @@ const ManagerAdd = () => {
                   setNewGroup({ ...newGroup, main_group: e.target.value })
                 }
               >
+                <option>Seleziona il gruppo principale</option>
                 {newGroup.actual_groups.map((group) => (
                   <option>{group}</option>
                 ))}

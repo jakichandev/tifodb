@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { getDocs, collection } from "firebase/firestore";
 import { db } from "../config/firebase";
 
-export default function   useFetch() {
+export default function useFetch() {
   const dbRef = collection(db, "curve");
   const [dataCurves, setDataCurves] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -27,7 +27,5 @@ export default function   useFetch() {
     };
     fetchCurves();
   }, []);
-
-  console.log(dataCurves);
-  return { dataCurves, loading, error };
+  return { dataCurves, loading, error, setDataCurves };
 }

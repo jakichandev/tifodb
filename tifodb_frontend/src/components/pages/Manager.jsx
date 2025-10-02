@@ -1,5 +1,5 @@
 import "./Manager.css";
-import { useState, useContext, useEffect, use } from "react";
+import { useState, useContext, useEffect } from "react";
 import { doc, deleteDoc } from "firebase/firestore";
 import { db } from "../../config/firebase";
 import Navbar from "../ui/Navbar";
@@ -15,7 +15,7 @@ import useFetch from "../../hooks/useFetch";
 import { warningStates } from "../ui/WarningsBanner";
 
 const Manager = () => {
-  const { dataCurves, loading, error } = useFetch();
+  const { dataCurves, loading, error, setDataCurves } = useFetch();
   const [warningBanner, setWarningBanner] = useState(false);
   const [warningState, setWarningState] = useState(warningStates.default);
   const [curveToDelete, setCurveToDelete] = useState(null);
@@ -44,9 +44,10 @@ const Manager = () => {
       return;
     }
     const resOfDelete = await deleteDoc(doc(db, "curve", curve.id));
+    setDataCurves(dataCurves.filter((item) => item.id !== curve.id));
     setWarningState(warningStates.success);
     setCurveToDelete(null);
-    console.log(resOfDelete);
+    console.log("Deleted curve:", curve, resOfDelete);
   };
 
   if (error) {

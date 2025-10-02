@@ -8,7 +8,7 @@ export const warningStates = {
   },
   success: {
     text: "Action completed successfully!",
-    buttonsText: { yes: "Close", no: null },
+    buttonsText: { yes: null, no: "Close" },
     className: "warning-banner success",
   },
   error: {

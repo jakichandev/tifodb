@@ -81,6 +81,10 @@ section.manager-add {
     max-width: 90%;
     box-sizing: border-box;
     margin: 2rem auto;
+    & > nav {
+      position: relative;
+      overflow: hidden;
+    }
     & > nav > a {
       display: flex;
       align-items: center;
