@@ -1,5 +1,4 @@
 import { useParams } from "react-router-dom";
-import { useEffect } from "react";
 import Loader from "../elements/Loader";
 import { useFetch } from "../../hooks/useFetch";
 import Navbar from "../ui/Navbar";
@@ -72,6 +71,11 @@ export const SingleCurve = () => {
                 {dataCurves?.city}
               </h3>
             </div>
+          </div>
+
+          <div>
+            <h4>Curva</h4>
+            <span>{dataCurves?.main_name}</span>
           </div>
 
           <ListField label="Gruppi Attuali" field={dataCurves?.actual_groups} />

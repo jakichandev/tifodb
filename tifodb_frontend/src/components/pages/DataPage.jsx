@@ -9,7 +9,7 @@ const DataPage = () => {
   const navigate = useNavigate();
 
   return (
-    <>
+    <section className="data-page">
       <Navbar />
       <div className="table-container">
         {loading && <Loader />}
@@ -86,7 +86,7 @@ const DataPage = () => {
           </tbody>
         </table>
       </div>
-    </>
+    </section>
   );
 };
 

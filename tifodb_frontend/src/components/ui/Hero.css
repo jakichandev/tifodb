@@ -62,7 +62,6 @@ div.search-wrapper {
 
 @media screen and (max-width: 950px) {
   section.hero {
-    height: 70vh;
     > div.content {
       width: 80%;
     }

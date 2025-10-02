@@ -102,7 +102,7 @@ const ManagerAdd = () => {
       setLoading(false);
       return;
     }
-    await setDoc(doc(db, "curve", team), {
+    await setDoc(doc(db, "curve", team.toLowerCase()), {
       team: team,
       city: city,
       actual_groups: actual_groups,

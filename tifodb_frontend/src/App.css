@@ -46,3 +46,9 @@ span {
 *.w-x-bold {
   font-weight: 900;
 }
+*.hidden {
+  display: none;
+}
+
+
+
