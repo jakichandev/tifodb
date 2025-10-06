@@ -23,31 +23,16 @@ export const SingleCurve = () => {
   const { id } = useParams();
   const { dataCurves, loading, error } = useFetch(id);
 
-  if (!dataCurves || dataCurves === undefined) {
-    return (
-      <>
-        <Navbar />
-        <section className="single-curve">
-          {loading ?? <Loader />}
-          <div className="wrapper">
-            <h3>Curva non trovata</h3>
-          </div>
-        </section>
-      </>
-    );
-  }
-
   return (
     <>
       <Navbar />
       <section className="single-curve">
         <div className="wrapper">
           {loading && <Loader />}
-          {!dataCurves || (error && <h2>Si è verificato un errore</h2>)}
           <div className="header">
             <div>
               <h1>
-                <span></span>
+                {!dataCurves && "Curva Non trovata "}
                 {dataCurves?.team}
               </h1>
             </div>

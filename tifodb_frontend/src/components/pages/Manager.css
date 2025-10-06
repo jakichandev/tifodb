@@ -64,6 +64,9 @@ section.manager-add {
                 align-items: center;
                 gap: 0.2rem;
               }
+              &.modify-icon {
+                color: var(--color-important);
+              }
             }
           }
         }
@@ -137,7 +140,7 @@ section.manager-add {
             color: var(--color-bg-dark);
             padding: 0.3rem 1rem;
             &:not(:first-child) {
-              margin: 0 0 0 0.4rem;
+              margin: 0.4rem 0 0 0.4rem;
             }
           }
         }

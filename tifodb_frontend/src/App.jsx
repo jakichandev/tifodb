@@ -13,6 +13,7 @@ import Manager from "./components/pages/Manager.jsx";
 import ManagerAdd from "./components/pages/ManagerAdd.jsx";
 import SignOut from "./components/pages/SignOut.jsx";
 import { SingleCurve } from "./components/pages/SingleCurve.jsx";
+import { ModifyCurve } from "./components/pages/ModifyCurve.jsx";
 function App() {
   const [userInfo, setUserInfo] = useState(null);
   useEffect(() => {
@@ -41,13 +42,14 @@ function App() {
   return (
     <AuthContext.Provider value={userInfo}>
       <Routes>
-        <Route path="/" element={<Homepage />}></Route>
-        <Route path="/list" element={<DataPage />}></Route>
-        <Route path="/manager" element={<Manager />}></Route>
-        <Route path="/signin" element={<AuthPage />}></Route>
-        <Route path="/manager/add" element={<ManagerAdd />}></Route>
+        <Route path="/" element={<Homepage />} />
+        <Route path="/list" element={<DataPage />} />
+        <Route path="/manager" element={<Manager />} />
+        <Route path="/signin" element={<AuthPage />} />
+        <Route path="/manager/add" element={<ManagerAdd />} />
         <Route path="/signout" element={<SignOut />}></Route>
-        <Route path="/curve/:id" element={<SingleCurve />}></Route>
+        <Route path="/curve/:id" element={<SingleCurve />} />
+        <Route path="/manager/modify/:id" element={<ModifyCurve />} />
       </Routes>
     </AuthContext.Provider>
   );

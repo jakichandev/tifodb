@@ -4,15 +4,15 @@ import { doc, deleteDoc } from "firebase/firestore";
 import { db } from "../../config/firebase";
 import Navbar from "../ui/Navbar";
 import Loader from "../elements/Loader";
-import { MdFilterListAlt } from "react-icons/md";
 import { IoMdRemoveCircleOutline } from "react-icons/io";
+import { FaPencilAlt } from "react-icons/fa";
 import { AuthContext } from "../../contexts/AuthContext";
-import { Link } from "react-router-dom";
 import { WarningsBanner } from "../ui/WarningsBanner";
-
 import Button from "../elements/Button";
 import { useFetch } from "../../hooks/useFetch";
 import { warningStates } from "../ui/WarningsBanner";
+import { useNavigate } from "react-router-dom";
+import { ManagerNav } from "../ui/ManagerNav";
 
 const Manager = () => {
   const { dataCurves, loading, error, setDataCurves } = useFetch();
@@ -20,6 +20,7 @@ const Manager = () => {
   const [warningState, setWarningState] = useState(warningStates.default);
   const [curveToDelete, setCurveToDelete] = useState(null);
   const user = useContext(AuthContext);
+  const navigate = useNavigate();
 
   useEffect(() => {
     console.log("Curve to delete:", curveToDelete);
@@ -80,26 +81,7 @@ const Manager = () => {
       )}
       <section className="manager">
         <div className="wrapper">
-          <nav className="manager-navbar">
-            <Link to={"/manager/add"}>
-              <Button content={"Aggiungi"} className={"btn-primary"}></Button>
-            </Link>
-
-            <div className="filter-btn">
-              <MdFilterListAlt></MdFilterListAlt>
-              <span>Filtri</span>
-            </div>
-            <div className="filter-wrapper">
-              <div className="league">
-                <select name="filter" id="filter-select">
-                  <option value="Serie A">Serie A</option>
-                  <option value="Serie B">Serie B</option>
-                  <option value="Serie C">Serie C</option>
-                  <option value="Serie D">Serie D</option>
-                </select>
-              </div>
-            </div>
-          </nav>
+          <ManagerNav />
           <div className="list-curves">
             <ul>
               {dataCurves?.map((curve) => (
@@ -116,9 +98,13 @@ const Manager = () => {
                         className="remove-icon"
                         onClick={() => openWarningBanner(curve)}
                       >
-                        <span>
-                          <IoMdRemoveCircleOutline />
-                        </span>
+                        <IoMdRemoveCircleOutline />
+                      </span>
+                      <span
+                        onClick={() => navigate(`/manager/modify/${curve.id}`)}
+                        className="modify-icon"
+                      >
+                        <FaPencilAlt />
                       </span>
                     </div>
                   )}
