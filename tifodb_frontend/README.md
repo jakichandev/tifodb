@@ -31,4 +31,4 @@ yarn install or npm install
 yarn dev or npm run dev
 ```
 
-See online project: [Project]("https://tifodb.netlify.app/")
+See online project: [Project](https://tifodb.netlify.app/)
