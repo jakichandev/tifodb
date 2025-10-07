@@ -1,6 +1,5 @@
 import Navbar from "../ui/Navbar";
 import { Form } from "../ui/Form";
-import Loader from "../elements/Loader";
 import "./Manager.css";
 import { AuthContext } from "../../contexts/AuthContext";
 import { auth } from "../../config/firebase";
@@ -24,13 +23,6 @@ const ManagerAdd = () => {
     league: "",
   });
 
-  const [loading, setLoading] = useState(false);
-
-  const [error, setError] = useState({
-    status: false,
-    type: "NONE",
-    message: "Nessun Errore",
-  });
 
 
   
@@ -47,12 +39,13 @@ const ManagerAdd = () => {
       </>
     );
   }
+
+  
   return (
     <>
       <Navbar />
       <section className="manager-add">
         <div className="wrapper">
-          {loading && <Loader />}
           <nav>
             <Link to={"/manager"}>
               <IoChevronBack />
@@ -64,7 +57,6 @@ const ManagerAdd = () => {
             setNewGroup={setNewGroup}
             groupData={newGroup}
             mode="ADD"
-            setError={setError}
           />
         </div>
       </section>

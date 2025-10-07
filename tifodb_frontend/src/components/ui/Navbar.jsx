@@ -14,10 +14,6 @@ const Navbar = () => {
   const [active, setActive] = useState(false);
   const location = useLocation();
 
-  const buttonProps = {
-    content: "Collabora",
-    className: active ? "button-link active" : "button-link",
-  };
   return (
     <header>
       <Link to={"/"} className="logo-link">
@@ -26,7 +22,7 @@ const Navbar = () => {
 
       <nav className={active ? "active" : ""}>
         <ul>
-          <li>
+          {/* <li>
             <Link
               to={"/history"}
               className={location.pathname === "/history" ? "current" : ""}
@@ -34,14 +30,14 @@ const Navbar = () => {
               <MdOutlineStadium />
               <span>Storia del movimento</span>
             </Link>
-          </li>
+          </li> */}
           <li>
             <Link
               to={"/list"}
               className={location.pathname === "/list" ? "current" : ""}
             >
               <MdListAlt />
-              <span>Italia</span>
+              <span className={location.pathname === "/list" ? "current" : ""}>Italia</span>
             </Link>
           </li>
         </ul>

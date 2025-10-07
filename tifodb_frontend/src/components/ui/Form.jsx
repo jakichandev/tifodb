@@ -4,6 +4,34 @@ import ListFormField from "../elements/ListFormField";
 import { useEffect, useState } from "react";
 import Loader from "../elements/Loader";
 
+const statusType = {
+  MISSING_DATA: {
+    message: "Uno o più dati mancanti, controlla prima di proseguire!",
+    label: "Dati mancanti",
+    className: "error",
+  },
+  NOT_VALID_ARR_DATA: {
+    message: "Impossibile inserire nella lista questo dato",
+    label: "Non valido",
+    className: "error",
+  },
+  NOT_ERROR_ARR_DATA: {
+    message: "",
+    label: "Dato inserito correttamente",
+    className: "valid",
+  },
+  NOT_ERROR_FORM: {
+    message: "",
+    label: "",
+    className: "",
+  },
+  DATA_ADDED: {
+    message: "I dati sono stati aggiornati",
+    label: "Dati Aggiornati",
+    className: "valid",
+  },
+};
+
 const Input = ({ type, groupData, id, name, prop, setNewGroup }) => {
   return (
     <input
@@ -21,11 +49,40 @@ const Input = ({ type, groupData, id, name, prop, setNewGroup }) => {
   );
 };
 
-export const Form = ({ setNewGroup, groupData, mode, setError }) => {
+export const Form = ({ setNewGroup, groupData, mode }) => {
   useEffect(() => {
     setNewGroup(groupData);
   }, [groupData, setNewGroup]);
+
   const [loading, setLoading] = useState(false);
+
+  const [error, setError] = useState({
+    status: false,
+    type: statusType["NOT_ERROR_FORM"],
+  });
+
+  const [previews, setPreviews] = useState({
+    actual_groups: undefined,
+    legendary_groups: undefined,
+    friendships: undefined,
+    rivalries: undefined,
+  });
+
+  const checkAndConfirmSave = async (fnSaveData, firebaseDoc, payload) => {
+    try {
+      await fnSaveData(firebaseDoc, payload);
+      setError({
+        status: false,
+        type: statusType["DATA_ADDED"]
+      })
+    } catch (error) {
+      console.log(error);
+      return setError({
+        status: true,
+        type: statusType["DB_ERROR"],
+      });
+    }
+  };
 
   const saveData = async (e) => {
     e.preventDefault();
@@ -42,6 +99,7 @@ export const Form = ({ setNewGroup, groupData, mode, setError }) => {
       rivalries,
       main_group,
       stadium,
+      league,
     } = groupData;
     const payload = {
       team,
@@ -53,6 +111,7 @@ export const Form = ({ setNewGroup, groupData, mode, setError }) => {
       rivalries,
       main_group,
       stadium,
+      league,
     };
 
     if (
@@ -64,22 +123,13 @@ export const Form = ({ setNewGroup, groupData, mode, setError }) => {
     ) {
       setError({
         status: true,
-        type: "ERROR_SAVING_DATA",
-        message:
-          "Problema nel salvataggio dei dati, controlla di aver inserito correttamente i valori!",
+        type: statusType["MISSING_DATA"],
       });
       return setLoading(false);
     }
 
-    if (mode === "ADD") {
-      await setDoc(fbDoc, payload);
-    } else {
-      try {
-        await updateDoc(fbDoc, payload);
-      } catch (error) {
-        console.log("error: " + error);
-      }
-    }
+    if (mode === "ADD") checkAndConfirmSave(setDoc, fbDoc, payload);
+    else checkAndConfirmSave(updateDoc, fbDoc, payload);
 
     setLoading(false);
   };
@@ -91,31 +141,24 @@ export const Form = ({ setNewGroup, groupData, mode, setError }) => {
     });
   };
 
-  const [previews, setPreviews] = useState({
-    actual_groups: undefined,
-    legendary_groups: undefined,
-    friendships: undefined,
-    rivalries: undefined,
-  });
-
   const addGroupList = (group, event, property, input) => {
     event.preventDefault();
     if (!group || group.length < 2) {
       return setError({
         status: true,
-        type: "NOT_VALID_ACTUAL_GROUP",
-        message: "Gruppo non valido!",
+        type: statusType["NOT_VALID_ARR_DATA"],
       });
     }
     setNewGroup({
       ...groupData,
       [property]: [...groupData[`${property}`], group],
     });
+
     setError({
       status: false,
-      type: "NONE",
-      message: "Dati inseriti validamente.",
+      type: statusType["NOT_ERROR_ARR_DATA"],
     });
+
     setPreviews({ ...previews, [property]: "" });
     input.value = "";
   };
@@ -123,6 +166,10 @@ export const Form = ({ setNewGroup, groupData, mode, setError }) => {
   return (
     <form className="add-curve-form">
       {loading && <Loader />}
+      <div className="form-status">
+        <label>{error.type.label}</label>
+        <p>{error.type.message}</p>
+      </div>
       <div>
         <label htmlFor="team">Team *</label>
         <Input

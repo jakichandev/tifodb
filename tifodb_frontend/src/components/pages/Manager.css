@@ -98,9 +98,12 @@ section.manager-add {
     }
     & > form.add-curve-form {
       height: 80vh;
+      overflow-x: hidden;
       overflow-y: auto;
       box-sizing: border-box;
       padding: 1rem 0.3rem;
+      position: relative;
+
       & > div {
         display: flex;
         flex-direction: column;
@@ -108,6 +111,18 @@ section.manager-add {
         padding: 0.9rem;
         border: 1px solid #3e3e3e;
         color: var(--color-primary);
+        &.form-status {
+          position: sticky;
+          width: 100%;
+          height: 4rem;
+          top: 0;
+          background-color: rgba(0, 0, 0, 0.438);
+          display: flex;
+          justify-content: center;
+          flex-direction: column;
+          align-items: center;
+          z-index: 1;
+        }
         & > input[type="text"],
         select {
           position: relative;

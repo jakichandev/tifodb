@@ -33,9 +33,12 @@ const ListFormField = ({
       <ul className="list-added-groups">
         {newGroup[name].map((groupAdded, i) => (
           <li key={i}>
-            <span style={{color: 'black'}}>{groupAdded}</span>
+            <span style={{ color: "black" }}>{groupAdded}</span>
             <span>
-              <CiCircleRemove onClick={() => removeItem(i, name)} />
+              <CiCircleRemove
+                style={{ color: "black" }}
+                onClick={() => removeItem(i, name)}
+              />
             </span>
           </li>
         ))}
