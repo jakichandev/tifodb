@@ -1,12 +1,25 @@
-# React + Vite
+# Tifodb
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Hello, this is **Tifodb**, my personal project for my portfolio.
 
-Currently, two official plugins are available:
+### What is Tifodb?
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Tifodb is a web application that displays all data and info about football club fans in Europe
 
-## Expanding the ESLint configuration
+### Features
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- Sign up and Sign in [Auth](./public/markdown/auth.png).
+- Tifodb **Manager** to create, update and remove fans [Manager](./public/markdown/manager.png).
+- Search a fan curve from the search bar in the Homepage [Homepage](./public/markdown/homepage.png).
+
+### Technologies stack
+
+- React
+- CSS
+- React icons
+
+#### Next features
+
+1. Team colors
+2. Images of fans
+3. Dynamic table
