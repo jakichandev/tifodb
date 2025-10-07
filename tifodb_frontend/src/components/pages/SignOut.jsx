@@ -1,17 +1,13 @@
 import { signOut } from "firebase/auth";
 import { auth } from "../../config/firebase";
-import { AuthContext } from "../../contexts/AuthContext";
 import "./Signout.css";
-import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 
 const SignOut = () => {
+  
   const navigate = useNavigate();
+  
   const triggerSignOut = async () => {
-    if (!auth) {
-      navigate("/error");
-      return;
-    }
     await signOut(auth);
     navigate("/");
   };
