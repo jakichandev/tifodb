@@ -8,6 +8,7 @@ import Navbar from "../ui/Navbar";
 import AuthForm from "../elements/AuthForm";
 import "../elements/SigninForm.css";
 import "../elements/Elements.css";
+import { Footer } from "../ui/Footer";
 
 const AuthPage = () => {
   const [hiddenPassword, hidePassword] = useState(true);
@@ -100,6 +101,7 @@ const AuthPage = () => {
           hidePassword={hidePassword}
         ></AuthForm>
       </div>
+      <Footer />
     </>
   );
 };

@@ -3,14 +3,17 @@ import "../elements/DataTable.css";
 import Loader from "../elements/Loader";
 import { useFetch } from "../../hooks/useFetch";
 import { useNavigate } from "react-router-dom";
+import { Footer } from "../ui/Footer";
 
 const DataPage = () => {
   const { dataCurves, loading } = useFetch();
   const navigate = useNavigate();
 
   return (
-    <section className="data-page">
-      <Navbar />
+    <>
+    <Navbar />
+    <section className="data-page p-wrapper">
+
       <div className="table-container">
         {loading && <Loader />}
         <table className="fans-table" role="table">
@@ -87,6 +90,8 @@ const DataPage = () => {
         </table>
       </div>
     </section>
+    <Footer />
+    </>
   );
 };
 

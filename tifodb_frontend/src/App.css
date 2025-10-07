@@ -50,5 +50,9 @@ span {
   display: none;
 }
 
+*.p-wrapper {
+  padding: 8rem 0;
+}
+
 
 

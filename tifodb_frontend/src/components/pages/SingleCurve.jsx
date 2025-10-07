@@ -5,6 +5,7 @@ import Navbar from "../ui/Navbar";
 import "./SingleCurve.css";
 import { PiCityThin, PiRanking } from "react-icons/pi";
 import { TbBuildingStadium } from "react-icons/tb";
+import { Footer } from "../ui/Footer";
 
 const ListField = ({ label, field }) => (
   <div>
@@ -21,13 +22,13 @@ const ListField = ({ label, field }) => (
 
 export const SingleCurve = () => {
   const { id } = useParams();
-  const { dataCurves, loading, error } = useFetch(id);
+  const { dataCurves, loading } = useFetch(id);
 
   return (
     <>
       <Navbar />
       <section className="single-curve">
-        <div className="wrapper">
+        <div className="wrapper p-wrapper">
           {loading && <Loader />}
           <div className="header">
             <div>
@@ -79,6 +80,7 @@ export const SingleCurve = () => {
           />
         </div>
       </section>
+      <Footer />
     </>
   );
 };

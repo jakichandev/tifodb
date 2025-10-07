@@ -1,0 +1,20 @@
+footer.footer {
+    height: 10vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    & > div.icons {
+        display: flex;
+        transform: scale(1.2);
+        gap: 1.4rem;
+        & > div {
+            display: flex;
+            align-items: center;
+            & > a {
+                color: var(--color-primary);
+                margin-right: 0.2rem;
+            }
+        }
+    }
+}

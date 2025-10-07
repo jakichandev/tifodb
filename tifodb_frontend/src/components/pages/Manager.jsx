@@ -13,6 +13,7 @@ import { useFetch } from "../../hooks/useFetch";
 import { warningStates } from "../ui/WarningsBanner";
 import { useNavigate } from "react-router-dom";
 import { ManagerNav } from "../ui/ManagerNav";
+import {Footer} from "../ui/Footer"
 
 const Manager = () => {
   const { dataCurves, loading, error, setDataCurves } = useFetch();
@@ -79,7 +80,7 @@ const Manager = () => {
           onConfirm={() => removeCurve(curveToDelete)}
         />
       )}
-      <section className="manager">
+      <section className="manager p-wrapper">
         <div className="wrapper">
           <ManagerNav />
           <div className="list-curves">
@@ -114,6 +115,7 @@ const Manager = () => {
           </div>
         </div>
       </section>
+      <Footer />
     </>
   );
 };

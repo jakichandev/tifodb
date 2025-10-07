@@ -6,6 +6,7 @@ import { auth } from "../../config/firebase";
 import { Link } from "react-router-dom";
 import { IoChevronBack } from "react-icons/io5";
 import { useState, useContext } from "react";
+import { Footer } from "../ui/Footer";
 
 const ManagerAdd = () => {
   const user = useContext(AuthContext);
@@ -44,7 +45,7 @@ const ManagerAdd = () => {
   return (
     <>
       <Navbar />
-      <section className="manager-add">
+      <section className="manager-add p-wrapper">
         <div className="wrapper">
           <nav>
             <Link to={"/manager"}>
@@ -60,6 +61,7 @@ const ManagerAdd = () => {
           />
         </div>
       </section>
+      <Footer />
     </>
   );
 };

@@ -3,26 +3,23 @@ import "./Manager.css";
 import { Form } from "../ui/Form";
 import { ManagerNav } from "../ui/ManagerNav";
 import { useParams } from "react-router-dom";
-import { useEffect } from "react";
 import { useFetch } from "../../hooks/useFetch";
 import { IoChevronBack } from "react-icons/io5";
 import { Link } from "react-router-dom";
 import Loader from "../elements/Loader";
+import { Footer } from "../ui/Footer";
 
 export const ModifyCurve = () => {
   const { id } = useParams();
   const { dataCurves, loading, setDataCurves } = useFetch(id);
 
-  useEffect(() => {
-    console.log(dataCurves);
-  }, [dataCurves, id]);
 
   if (loading) return <Loader />;
 
   return (
     <>
       <Navbar />
-      <section className="manager-add">
+      <section className="manager-add p-wrapper">
         <div className="wrapper">
           <nav>
             <Link to={"/manager"}>
@@ -41,6 +38,7 @@ export const ModifyCurve = () => {
           )}
         </div>
       </section>
+      <Footer />
     </>
   );
 };
